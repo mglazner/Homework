@@ -1,0 +1,65 @@
+Hw3 due 11-25-13
+
+C:\Homework>irb
+irb(main):001:0> s="A big long string up here. And another sentence, y'all!"
+=> "A big long string up here. And another sentence, y'all!"
+irb(main):002:0> t=s.dup
+=> "A big long string up here. And another sentence, y'all!"
+irb(main):003:0> puts t.split
+A
+big
+long
+string
+up
+here.
+And
+another
+sentence,
+y'all!
+=> nil
+irb(main):004:0> t.split.each do |i|
+irb(main):005:1* puts i.upcase
+irb(main):006:1> end
+A
+BIG
+LONG
+STRING
+UP
+HERE.
+AND
+ANOTHER
+SENTENCE,
+Y'ALL!
+=> ["A", "big", "long", "string", "up", "here.", "And", "another", "sentence,",
+"y'all!"]
+irb(main):007:0> t.gsub(" ","-")
+=> "A-big-long-string-up-here.-And-another-sentence,-y'all!"
+irb(main):008:0> t.split.length
+=> 10
+irb(main):009:0> t.count('.')+t.count(',')+t.count('!')
+=> 3
+//the above is clearly not neat, nor elegant nor complete, as I could NOT get the 
+' to register as anything but an operator, even using \
+irb(main):010:0> puts t.split.sort
+A
+And
+another
+big
+here.
+long
+sentence,
+string
+up
+y'all!
+=> nil
+irb(main):011:0>
+
+//I worked a LOT on the last and first questions: to rewrite the matrix rotation problem with 
+loops, and to return an array of all the words containing the letter a, but reached no 
+real solution. I really think I am just not getting loops. I mean, I think I understand
+the basic logic of what loops are used for, and what they are doing, but I can't make
+any work. Over and over again I would create a loop that would just return what the first line
+asked for; .split or .each or .whatever, and never engage/output anything IN the loop.
+I thought it was a variable issue, but even creating the variables OUTSIDE the loop, so that
+they didn't disappear didn't really help.
+We probably need to back up again and re-run the lecture on loops? Even Google failed me...
