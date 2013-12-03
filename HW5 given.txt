@@ -1,0 +1,3 @@
+HW5 assigned by JC
+Take one of your solns to HW4 and create it as a ruby file, and decompose it into methods as you see fit. I would strongly recommend starting small.
+
