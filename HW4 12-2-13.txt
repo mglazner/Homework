@@ -1,7 +1,7 @@
 PRINT A HASH WITH KEYS FOR EACH VOWEL, WHERE EACH ITEM IS THE COUNT OF HOW MANY TIMES THAT VOWEL IS IN THE STRING, IN TWO DIFFERENT WAYS, THE FIRST TIME WITH CREATING AND INITIALIZING THE HASH OUTSIDE THE LOOP, THE SECOND TIME, CREATING/INITIALIZING THE LOOP INSIDE THE LOOP
 
 vowels=["a", "e", "i", "o", "u"]
-string="another big long string that has lots of characters"
+s="another big long string that has lots of characters"
 h={}
 
 Q1

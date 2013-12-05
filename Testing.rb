@@ -17,7 +17,7 @@
 #end
 #puts h
 
-#Using methods
+#Using methods ** note: probably didn't need to change "result" for h
 
 def output_results (result) #result is what we are passing the method 
   puts result
