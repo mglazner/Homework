@@ -15,8 +15,6 @@
  
 
 
-#def output_results()
-
 
 def separate_line(v1)
   puts v1.split
