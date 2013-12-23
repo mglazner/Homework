@@ -48,6 +48,5 @@ def sort(v6)
   puts "_______________"
 end
 
-def get_5_lines(v7)
   
 
