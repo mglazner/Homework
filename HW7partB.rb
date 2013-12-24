@@ -15,7 +15,7 @@ def main(s)
   sort(s)
 end
 
-s=gets
+#s=gets
 
 #until s=="exit\n" 
 #  main(s)
@@ -28,10 +28,10 @@ s=gets
 #  s=gets
 #end
 
-loop do 
+loop do
+  s=gets.chomp
+  break if s=="exit"
   main(s)
-  s=gets
-  break if s=="exit\n"
 end
 
 # Hallelujah! I tried a dozen ways, some of which are above, but NOTHING worked, and I couldn't figure out why. Google failed me, even. 
