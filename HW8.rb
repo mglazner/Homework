@@ -26,8 +26,16 @@ def main(s)
   sort(s)
 end
 
-loop do
+s1=""
+
+loop do  
   s=gets.chomp
-  break if s=="exit"
-  main(s)
+  if s!="exit"
+    s1<<s
+  else
+    main(s1)
+    break
+  end
 end
+
+
