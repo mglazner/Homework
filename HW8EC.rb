@@ -20,9 +20,9 @@ require_relative "tinybabylibrary"
 splitting=[]
 uppercase=[]
 gsubhyphen=""
-wordcount=""
-punctcount=""
-alphabetic=""
+wordcount=0
+punctcount=0
+alphabetic=[]
 
 loop do  
   s=gets
@@ -30,9 +30,9 @@ loop do
     separate_line(s,splitting)
     upcase(s,uppercase) 
     replace_spaces(s,gsubhyphen)
-    count_words(s, wordcount)
-    count_punct(s, punctcount)
-    sort(s, alphabetic)
+    wordcount+=count_words(s)
+    punctcount+=count_punct(s)
+    sort(s,alphabetic)
   else 
     puts_results(splitting,uppercase,gsubhyphen,wordcount,punctcount,alphabetic)
     break

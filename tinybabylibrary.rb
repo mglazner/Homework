@@ -12,16 +12,17 @@ def replace_spaces(v3, gsubhyphen)
   gsubhyphen<<v3.gsub(" ","-")
 end
 
-def count_words(v4, wordcount)
-  wordcount<<v4
+def count_words(v4)
+  v4.split.length
 end
 
-def count_punct(v5, punctcount)
-  punctcount<<((v5.count('.'))+(v5.count(','))+(v5.count('!'))+(v5.count("'"))+(v5.count("!"))) 
+def count_punct(v5)
+  ((v5.count('.'))+(v5.count(','))+(v5.count('!'))+(v5.count("'"))+(v5.count("!"))) 
 end
 
 def sort(v6, alphabetic)
-   alphabetic<<v6
+  alphabetic.concat(v6.split)
+  alphabetic.sort!
 end
 
 def puts_results(a,b,c,d,e,f) 
@@ -32,10 +33,10 @@ def puts_results(a,b,c,d,e,f)
   puts "--------------------"
   puts c
   puts "--------------------"
-  puts d.split.length
+  puts d
   puts "--------------------"
   puts e
   puts "--------------------"
-  puts f.split.sort
+  puts f
   puts "--------------------" 
 end
