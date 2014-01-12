@@ -1,15 +1,20 @@
-def separate_line(v1, splitting)
-  splitting<<v1.split
+#Create methods that don't take the second parameter, instead use the return value of the method to run the loop.
+#Fix count_punct to add a count for '?' by making it more generic. (By not just adding another term to the formula)
+
+PUNCT = [".", ",", "!", "'", "?",":",";"]
+
+def separate_line(v1)
+  v1.split
 end
 
-def upcase(v2, uppercase)
+def upcase(v2)
   v2.split.each do |m|
-  uppercase<<m.upcase!  
- end
+    m.upcase!  
+  end
 end
 
-def replace_spaces(v3, gsubhyphen)
-  gsubhyphen<<v3.gsub(" ","-")
+def replace_spaces(v3)
+  v3.gsub(" ","-")
 end
 
 def count_words(v4)
@@ -17,12 +22,11 @@ def count_words(v4)
 end
 
 def count_punct(v5)
-  ((v5.count('.'))+(v5.count(','))+(v5.count('!'))+(v5.count("'"))+(v5.count("!"))) 
+  (v5.split(//)-((v5.split(//))-PUNCT)).length
 end
 
-def sort(v6, alphabetic)
-  alphabetic.concat(v6.split)
-  alphabetic.sort!
+def sort(v6)
+  v6.split.sort
 end
 
 def puts_results(a,b,c,d,e,f) 
