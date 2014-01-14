@@ -22,7 +22,12 @@ def count_words(v4)
 end
 
 def count_punct(v5)
-  (v5.split(//)-((v5.split(//))-PUNCT)).length
+#  (v5.split(//)-((v5.split(//))-PUNCT)).length
+  holding=0
+  PUNCT.each do |m|
+    holding+=(v5.count(m))
+  end
+  holding
 end
 
 def sort(v6)
