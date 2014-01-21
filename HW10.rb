@@ -17,12 +17,13 @@ alphabetic=[]
 loop do  
   s=gets
   if s!="exit\n"
-    if should_split; splitting+=separate_line(s) end
-    if should_uppercase; uppercase+=upcase(s) end
-    if should_subhyphen; gsubhyphen+=replace_spaces(s) end
-    if should_wcount; wordcount+=count_words(s) end
-    if should_sort; (alphabetic+=sort(s)).sort! end
-    if should_pcount; punctcount+=count_punct(s) end
+    splitting+=separate_line(s) if should_split
+    splitting+=separate_line(s) if should_split 
+    uppercase+=upcase(s) if should_uppercase
+    gsubhyphen+=replace_spaces(s) if should_subhyphen 
+    wordcount+=count_words(s) if should_wcount
+    (alphabetic+=sort(s)).sort! if should_sort
+    punctcount+=count_punct(s) if should_pcount 
   else
     puts_results(splitting,uppercase,gsubhyphen,wordcount,punctcount,alphabetic)
     break

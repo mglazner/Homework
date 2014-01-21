@@ -31,7 +31,7 @@ def count_punct(v5)
 end
 
 def sort(v6)
-  v6.split.sort
+  v6.split
 end
 
 def puts_results(a,b,c,d,e,f) 
