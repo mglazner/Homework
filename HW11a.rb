@@ -2,12 +2,12 @@ require_relative "tinybabylibrary"
 
 p ARGV
 
-should_split = true
-should_uppercase = true
-should_subhyphen = true
-should_wcount = true
-should_pcount = true
-should_sort = true
+should_split = true unless ARGV.any? {|s| s.include?('spl')}
+should_uppercase = true unless ARGV.any? {|s| s.include?('up')}
+should_subhyphen = true unless ARGV.any? {|s| s.include?('sub')}
+should_wcount = true unless ARGV.any? {|s| s.include?('wct')}
+should_pcount = true unless ARGV.any? {|s| s.include?('pct')}
+should_sort = true unless ARGV.any? {|s| s.include?('sort')}
 
 splitting=[]
 uppercase=[]
@@ -32,4 +32,3 @@ loop do
   end
 end
 
-#create a set of variables that we will assign boolean values to, and those booleans will dictate whether we calculate and print each result
