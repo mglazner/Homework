@@ -2,12 +2,12 @@ require_relative "tinybabylibrary"
 
 p ARGV
 
-should_split = true unless ARGV.any? {|s| s.include?('spl')}
-should_uppercase = true unless ARGV.any? {|s| s.include?('up')}
-should_subhyphen = true unless ARGV.any? {|s| s.include?('sub')}
-should_wcount = true unless ARGV.any? {|s| s.include?('wct')}
-should_pcount = true unless ARGV.any? {|s| s.include?('pct')}
-should_sort = true unless ARGV.any? {|s| s.include?('sort')}
+should_split = true unless ARGV.any? {|s| s.include?('-spl')}
+should_uppercase = true unless ARGV.any? {|s| s.include?('-up')}
+should_subhyphen = true unless ARGV.any? {|s| s.include?('-sub')}
+should_wcount = true unless ARGV.any? {|s| s.include?('-wct')}
+should_pcount = true unless ARGV.any? {|s| s.include?('-pct')}
+should_sort = true unless ARGV.any? {|s| s.include?('-sort')}
 
 splitting=[]
 uppercase=[]
