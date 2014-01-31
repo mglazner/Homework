@@ -1,0 +1,184 @@
+we have encountered Objects before. A variable holds/points to an Object. Ruby is an object-oriented language. Arrays, Strings, numbers are objects. we can call methods on them. Str, ARR, and Number are pre-existing objects in Ruby, but we can create Objects that are meaningful to us.
+
+there is an idea with OBJ, that there is an instance and a class, instance is a specific array, "array" is the class of the instance.
+
+class is where the methods are defined, that tells us what we can do to the Object. we can do things with arrays we can't do with strings etc.
+
+an object is a collection of data and the methods that operate on it.  
+
+we can define and add methods to classes whenever we want, we can create classes and even alter the standard library of ruby classes. 
+
+have to have initial caps because is a constant
+
+create a new instance of class Kid, we give it a
+
+
+
+# Rails Environment Configuration.
+
+---
+git:
+  user.name:  Megan Glazner
+  user.email: ladyglazner@gmail.com
+  version:    git version 1.8.1.msysgit.1
+
+ruby:
+  bin:        C:/RailsInstaller/Ruby1.9.3/bin/ruby.exe
+  version:    ruby 1.9.3p392 (2013-02-22) [i386-mingw32]
+
+rails:
+  bin:        C:/RailsInstaller/Ruby1.9.3/bin/rails.bat
+  version:    Rails 3.2.13
+
+ssh:
+  public_key_location: C:\Users\owner/.ssh/id_rsa.pub
+  public_key_contents: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEArH1hJioDfeh9bgMsASgo1
++1k3yXbJq5qGc/75Ac3cz7Z2oqRBlFszd8VmNh/pidO+VWu/d9Ib6wYa2EMp0sEegxGvJ7w9itH0Zbxu
++z+vieNOBTndXTvfGfueToUrHkMKFrDl0IoBWVSyD6MSUoAre96EgDZDPiJdKITuNB8HBPXtGHHa8buz
+hKrcGVeKJzK5JDCYYGWmWERoESBswCoEbffqBQ1W625RwfYEUc4kq+KT6UQe8Fn3GhVqxgdUQl0xWUvV
+fIPpLySIQXvKlECs2kVUJ431FsnsuXxLH28k0u2mEu+yQ7XYerOC+oIrG7yCS8GvvP08qbzNBFThsNfX
+Q== Megan Glazner <ladyglazner@gmail.com>
+
+
+
+
+C:\Homework>irb
+irb(main):001:0> class Kid
+irb(main):002:1> end
+=> nil
+irb(main):003:0> Kid
+=> Kid
+irb(main):004:0> Array
+=> Array
+irb(main):005:0> String
+=> String
+irb(main):006:0> k=Kid.new
+=> #<Kid:0x28af868>
+irb(main):007:0> k
+=> #<Kid:0x28af868>
+irb(main):008:0> a=Array.new
+=> []
+irb(main):009:0> h=Hash.new
+=> {}
+irb(main):010:0> s=String.new
+=> ""
+irb(main):011:0> Kid
+=> Kid
+irb(main):012:0> class Kid
+irb(main):013:1> def play
+irb(main):014:2> puts "YAY!"
+irb(main):015:2> end
+irb(main):016:1> end
+=> nil
+irb(main):017:0> k.play
+YAY!
+=> nil
+irb(main):018:0> class Kid
+irb(main):019:1> attr_accessor :name
+irb(main):020:1> end
+=> nil
+irb(main):021:0> k.name="Cora"
+=> "Cora"
+irb(main):022:0> k.name
+=> "Cora"
+irb(main):023:0> k.new
+NoMethodError: undefined method `new' for #<Kid:0x28af868 @name="Cora">
+        from (irb):23
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):024:0> Kid.new
+=> #<Kid:0x2804a30>
+irb(main):025:0> Kid.new.name
+=> nil
+irb(main):026:0> class Kid
+irb(main):027:1> def greeting
+irb(main):028:2> puts "Hi! "+name
+irb(main):029:2> end
+irb(main):030:1> end
+=> nil
+irb(main):031:0> k.greeting
+Hi! Cora
+=> nil
+irb(main):032:0> k.greeting
+Hi! Cora
+=> nil
+irb(main):033:0> class Array
+irb(main):034:1> def whatever
+irb(main):035:2> puts "that's the magic of ruby!"
+irb(main):036:2> end
+irb(main):037:1> end
+=> nil
+irb(main):038:0> a.whatever
+that's the magic of ruby!
+=> nil
+irb(main):039:0> class Array
+irb(main):040:1> def [] (index)
+irb(main):041:2> 42
+irb(main):042:2> end
+irb(main):043:1> end
+=> nil
+irb(main):044:0> a[100]
+
+irb(main):001:0> class String
+irb(main):002:1> def my_split
+irb(main):003:2> split("|")
+irb(main):004:2> end
+irb(main):005:1> end
+=> nil
+irb(main):006:0> "something|else".my_split
+=> ["something", "else"]
+irb(main):007:0> "do you care about the muffin man, i don't".my_split
+=> ["do you care about the muffin man, i don't"]
+irb(main):008:0>
+
+
+C:\Homework>irb
+irb(main):001:0> class String
+irb(main):002:1> def split(*_)
+irb(main):003:2> ["42"]
+irb(main):004:2> end
+irb(main):005:1> end
+=> nil
+
+****
+when you are in a method on a class (inside the definition) self refers to the instance of the class
+****
+
+most of the time you will not need to call self on a method, except for defining initialize methods 
+
+C:\Homework>irb
+irb(main):001:0> class Kid
+irb(main):002:1> attr_accessor :name
+irb(main):003:1> end
+=> nil
+irb(main):004:0> class Kid
+irb(main):005:1> def initialize(name)
+irb(main):006:2> self.name=name
+irb(main):007:2> end
+irb(main):008:1> end
+=> nil
+irb(main):009:0> Kid.new
+ArgumentError: wrong number of arguments (0 for 1)
+        from (irb):5:in `initialize'
+        from (irb):9:in `new'
+        from (irb):9
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):010:0> p=Kid.new(Asher)
+NameError: uninitialized constant Asher
+        from (irb):10
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):011:0> p=Kid.new("Asher")
+=> #<Kid:0x27c06f0 @name="Asher">
+irb(main):012:0> p.name
+=> "Asher"
+irb(main):013:0> p
+=> #<Kid:0x27c06f0 @name="Asher">
+irb(main):014:0> p p
+#<Kid:0x27c06f0 @name="Asher">
+=> #<Kid:0x27c06f0 @name="Asher">
+irb(main):015:0> q=Kid.new("Jason","Amber")
+ArgumentError: wrong number of arguments (2 for 1)
+        from (irb):5:in `initialize'
+        from (irb):15:in `new'
+        from (irb):15
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+

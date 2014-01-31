@@ -49,3 +49,18 @@ def puts_results(a,b,c,d,e,f)
   puts f
   puts "--------------------" 
 end
+
+def file_results(a,b,c,d,e,f)
+  output=(File.open("hw12output.txt","w"))
+  output.puts a
+  output.puts "\n-----------------\n\n"
+  output.puts b
+  output.puts "\n-----------------\n\n"
+  output.puts c
+  output.puts "\n-----------------\n\n"
+  output.puts d
+  output.puts "\n-----------------\n\n"
+  output.puts e
+  output.puts "\n-----------------\n\n"
+  output.puts f
+end
