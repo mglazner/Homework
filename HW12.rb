@@ -1,4 +1,3 @@
-
 require_relative "tinybabylibrary"
 
 f=File.open(ARGV[0])
@@ -36,5 +35,5 @@ if answer=="no";
     file_results(split,upcs,hyph,wdct,ptct,alph);
     puts "\nYour output is on the C: drive, in the folder named Homework, in the file marked Hw12output.txt \n\nThank you!";
   else 
-    puts "\nIt is a simple yes or no. Monkeys can do this correctly. You disappoint me. Go home.";
+    puts "\nI asked for a simple yes or no. \n\nMonkeys can do this. \n\nYou disappoint me. Go home.";
 end

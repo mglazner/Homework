@@ -1,10 +1,15 @@
-#Create methods that don't take the second parameter, instead use the return value of the method to run the loop.
-#Fix count_punct to add a count for '?' by making it more generic. (By not just adding another term to the formula)
-
 PUNCT = [".", ",", "!", "'", "?",":",";","-","~"]
 
 def separate_line(v1)
   v1.split
+end
+
+def count_words(x)
+  hold=0
+  x.each_line do |n|
+   hold=+n.split.length
+  end
+  hold
 end
 
 def upcase(v2)

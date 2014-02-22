@@ -1,0 +1,1187 @@
+
+
+we have encountered Objects before. A variable holds/points to an Object. Ruby is an object-oriented language. Arrays, Strings, numbers are objects. we can call methods on them. Str, ARR, and Number are pre-existing objects in Ruby, but we can create Objects that are meaningful to us.
+
+there is an idea with OBJ, that there is an instance and a class, instance is a specific array, "array" is the class of the instance.
+
+class is where the methods are defined, that tells us what we can do to the Object. we can do things with arrays we can't do with strings etc.
+
+an object is a collection of data and the methods that operate on it.  
+
+we can define and add methods to classes whenever we want, we can create classes and even alter the standard library of ruby classes. 
+
+have to have initial caps because is a constant
+
+create a new instance of class Kid, we give it a
+
+C:\Homework>irb
+irb(main):001:0> class Kid
+irb(main):002:1> end
+=> nil
+irb(main):003:0> Kid
+=> Kid
+irb(main):004:0> Array
+=> Array
+irb(main):005:0> String
+=> String
+irb(main):006:0> k=Kid.new
+=> #<Kid:0x28af868>
+irb(main):007:0> k
+=> #<Kid:0x28af868>
+irb(main):008:0> a=Array.new
+=> []
+irb(main):009:0> h=Hash.new
+=> {}
+irb(main):010:0> s=String.new
+=> ""
+irb(main):011:0> Kid
+=> Kid
+irb(main):012:0> class Kid
+irb(main):013:1> def play
+irb(main):014:2> puts "YAY!"
+irb(main):015:2> end
+irb(main):016:1> end
+=> nil
+irb(main):017:0> k.play
+YAY!
+=> nil
+irb(main):018:0> class Kid
+irb(main):019:1> attr_accessor :name
+irb(main):020:1> end
+=> nil
+irb(main):021:0> k.name="Cora"
+=> "Cora"
+irb(main):022:0> k.name
+=> "Cora"
+irb(main):023:0> k.new
+NoMethodError: undefined method `new' for #<Kid:0x28af868 @name="Cora">
+        from (irb):23
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):024:0> Kid.new
+=> #<Kid:0x2804a30>
+irb(main):025:0> Kid.new.name
+=> nil
+irb(main):026:0> class Kid
+irb(main):027:1> def greeting
+irb(main):028:2> puts "Hi! "+name
+irb(main):029:2> end
+irb(main):030:1> end
+=> nil
+irb(main):031:0> k.greeting
+Hi! Cora
+=> nil
+irb(main):032:0> k.greeting
+Hi! Cora
+=> nil
+irb(main):033:0> class Array
+irb(main):034:1> def whatever
+irb(main):035:2> puts "that's the magic of ruby!"
+irb(main):036:2> end
+irb(main):037:1> end
+=> nil
+irb(main):038:0> a.whatever
+that's the magic of ruby!
+=> nil
+irb(main):039:0> class Array
+irb(main):040:1> def [] (index)
+irb(main):041:2> 42
+irb(main):042:2> end
+irb(main):043:1> end
+=> nil
+irb(main):044:0> a[100]
+
+irb(main):001:0> class String
+irb(main):002:1> def my_split
+irb(main):003:2> split("|")
+irb(main):004:2> end
+irb(main):005:1> end
+=> nil
+irb(main):006:0> "something|else".my_split
+=> ["something", "else"]
+irb(main):007:0> "do you care about the muffin man, i don't".my_split
+=> ["do you care about the muffin man, i don't"]
+irb(main):008:0>
+
+
+C:\Homework>irb
+irb(main):001:0> class String
+irb(main):002:1> def split(*_)
+irb(main):003:2> ["42"]
+irb(main):004:2> end
+irb(main):005:1> end
+=> nil
+
+****
+when you are in a method on a class (inside the definition) self refers to the instance of the class
+****
+
+most of the time you will not need to call self on a method, except for defining initialize methods 
+
+C:\Homework>irb
+irb(main):001:0> class Kid
+irb(main):002:1> attr_accessor :name
+irb(main):003:1> end
+=> nil
+irb(main):004:0> class Kid
+irb(main):005:1> def initialize(name)
+irb(main):006:2> self.name=name
+irb(main):007:2> end
+irb(main):008:1> end
+=> nil
+irb(main):009:0> Kid.new
+ArgumentError: wrong number of arguments (0 for 1)
+        from (irb):5:in `initialize'
+        from (irb):9:in `new'
+        from (irb):9
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):010:0> p=Kid.new(Asher)
+NameError: uninitialized constant Asher
+        from (irb):10
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):011:0> p=Kid.new("Asher")
+=> #<Kid:0x27c06f0 @name="Asher">
+irb(main):012:0> p.name
+=> "Asher"
+irb(main):013:0> p
+=> #<Kid:0x27c06f0 @name="Asher">
+irb(main):014:0> p p
+#<Kid:0x27c06f0 @name="Asher">
+=> #<Kid:0x27c06f0 @name="Asher">
+irb(main):015:0> q=Kid.new("Jason","Amber")
+ArgumentError: wrong number of arguments (2 for 1)
+        from (irb):5:in `initialize'
+        from (irb):15:in `new'
+        from (irb):15
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+_____________________________________________________________________
+
+
+WK13
+
+class is a definition or template of what an instance (0bject) will look like
+
+irb(main):006:0> class Socks
+irb(main):007:1> def matching
+irb(main):008:2> true
+irb(main):009:2> "all socks match"
+irb(main):010:2> end
+irb(main):011:1> end
+=> nil
+irb(main):012:0> Socks.new
+=> #<Socks:0x29e1298>
+irb(main):013:0> x=Socks.new
+=> #<Socks:0x29dbd78>
+irb(main):014:0> x
+=> #<Socks:0x29dbd78>
+irb(main):015:0> x.matching
+=> "all socks match"
+
+a class defines methods and defines what data an instance of that object is going to hold on to. 
+
+instance variable is always prefixed with an @ sign
+sumbolized an instance variable of that class, and was available throughout that object
+
+irb(main):018:0> class Sock
+irb(main):019:1> def initialize(color)
+irb(main):020:2> @color=color
+irb(main):021:2> end
+irb(main):022:1> end
+=> nil
+irb(main):023:0> Sock.new
+ArgumentError: wrong number of arguments (0 for 1)
+        from (irb):19:in `initialize'
+        from (irb):23:in `new'
+        from (irb):23
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):024:0> Sock.new(red)
+NameError: undefined local variable or method `red' for main:Object
+        from (irb):24
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):025:0> Sock.new("red")
+=> #<Sock:0x2ac0fc0 @color="red">
+irb(main):026:0> class Sock
+irb(main):027:1> def color
+irb(main):028:2> @color
+irb(main):029:2> end
+irb(main):030:1> end
+=> nil
+irb(main):031:0> v=Sock.new("green")
+=> #<Sock:0x29a9120 @color="green">
+irb(main):032:0> v.color
+=> "green"
+irb(main):033:0> v.@color
+SyntaxError: (irb):33: syntax error, unexpected tIVAR
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):034:0> v.color="purple"
+NoMethodError: undefined method `color=' for #<Sock:0x29a9120 @color="green">
+        from (irb):34
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):035:0> class Sock
+irb(main):036:1> def color=(color)
+irb(main):037:2> @color=color
+irb(main):038:2> end
+irb(main):039:1> end
+=> nil
+irb(main):040:0> v.color="purple"
+=> "purple"
+irb(main):041:0> v.color
+=> "purple"
+irb(main):042:0> v.color=="green"
+=> false
+irb(main):043:0>
+
+
+b(main):043:0> class Sock
+b(main):044:1> def matching?
+b(main):045:2> ^C
+b(main):045:0> class Sock
+b(main):046:1> def matching?(other)
+b(main):047:2> @color==other.color
+               && FOR ADDDING MORE ARGUMENTS	
+b(main):048:2> end
+b(main):049:1> end
+ nil
+b(main):050:0> w=Sock.new("brown")
+ #<Sock:0x2abe6b0 @color="brown"
+b(main):051:0> v.matching?(w)
+ false
+b(main):052:0> w.matching?(w)
+ true
+b(main):053:0> class Sock
+b(main):054:1> def material
+b(main):055:2> @material
+b(main):056:2> end
+b(main):057:1> end
+ nil
+b(main):058:0> v.material
+ nil
+
+
+permissible instance variables, you have to define color, but you don't have to define material. you can create them to whine, but you don't have to.
+___________________________________________________________________________________________________
+__________Part2_____________________________________________________________
+________________________________________________________________________________
+
+# Rails Environment Configuration.
+
+---
+git:
+  user.name:  Megan Glazner
+  user.email: ladyglazner@gmail.com
+  version:    git version 1.8.1.msysgit.1
+
+ruby:
+  bin:        C:/RailsInstaller/Ruby1.9.3/bin/ruby.exe
+  version:    ruby 1.9.3p392 (2013-02-22) [i386-mingw32]
+
+rails:
+  bin:        C:/RailsInstaller/Ruby1.9.3/bin/rails.bat
+  version:    Rails 3.2.13
+
+ssh:
+  public_key_location: C:\Users\owner/.ssh/id_rsa.pub
+  public_key_contents: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEArH1hJioDfeh9bgMsASgo1
++1k3yXbJq5qGc/75Ac3cz7Z2oqRBlFszd8VmNh/pidO+VWu/d9Ib6wYa2EMp0sEegxGvJ7w9itH0Zbxu
++z+vieNOBTndXTvfGfueToUrHkMKFrDl0IoBWVSyD6MSUoAre96EgDZDPiJdKITuNB8HBPXtGHHa8buz
+hKrcGVeKJzK5JDCYYGWmWERoESBswCoEbffqBQ1W625RwfYEUc4kq+KT6UQe8Fn3GhVqxgdUQl0xWUvV
+fIPpLySIQXvKlECs2kVUJ431FsnsuXxLH28k0u2mEu+yQ7XYerOC+oIrG7yCS8GvvP08qbzNBFThsNfX
+Q== Megan Glazner <ladyglazner@gmail.com>
+
+
+
+
+C:\Homework>ruby newclass.rb
+57
+
+C:\Homework>ruby newclass.rb
+57
+
+C:\Homework>ruby hw13.rb "hw11text.rb"
+would you like to write your results to a file?
+no
+--------------------
+No
+guilt
+in
+life,
+no
+fear
+in
+death,
+This
+is
+the
+power
+of
+Christ
+in
+me;
+From
+life's
+first
+cry
+to
+final
+breath.
+Jesus
+commands
+my
+destiny.
+No
+power
+of
+hell,
+no
+scheme
+of
+man,
+Can
+ever
+pluck
+me
+from
+His
+hand;
+Till
+He
+returns
+or
+calls
+me
+home,
+Here
+in
+the
+power
+of
+Christ
+I'll
+stand.
+--------------------
+NO
+GUILT
+IN
+LIFE,
+NO
+FEAR
+IN
+DEATH,
+THIS
+IS
+THE
+POWER
+OF
+CHRIST
+IN
+ME;
+FROM
+LIFE'S
+FIRST
+CRY
+TO
+FINAL
+BREATH.
+JESUS
+COMMANDS
+MY
+DESTINY.
+NO
+POWER
+OF
+HELL,
+NO
+SCHEME
+OF
+MAN,
+CAN
+EVER
+PLUCK
+ME
+FROM
+HIS
+HAND;
+TILL
+HE
+RETURNS
+OR
+CALLS
+ME
+HOME,
+HERE
+IN
+THE
+POWER
+OF
+CHRIST
+I'LL
+STAND.
+--------------------
+No-guilt-in-life,-no-fear-in-death,
+This-is-the-power-of-Christ-in-me;
+From-life's-first-cry-to-final-breath.
+Jesus-commands-my-destiny.
+No-power-of-hell,-no-scheme-of-man,
+Can-ever-pluck-me-from-His-hand;
+Till-He-returns-or-calls-me-home,
+Here-in-the-power-of-Christ-I'll-stand.
+--------------------
+12
+--------------------
+Can
+Christ
+Christ
+From
+He
+Here
+His
+I'll
+Jesus
+No
+No
+This
+Till
+breath.
+calls
+commands
+cry
+death,
+destiny.
+ever
+fear
+final
+first
+from
+guilt
+hand;
+hell,
+home,
+in
+in
+in
+in
+is
+life's
+life,
+man,
+me
+me
+me;
+my
+no
+no
+of
+of
+of
+of
+or
+pluck
+power
+power
+power
+returns
+scheme
+stand.
+the
+the
+to
+--------------------
+57
+--------------------
+0
+
+Thanks, and have a nice day!
+
+C:\Homework>irb
+irb(main):001:0> ff=File.open("hw11text.rb
+irb(main):002:1" end
+irb(main):003:1" exit
+irb(main):004:1" )
+irb(main):005:1" )
+irb(main):006:1" end
+irb(main):007:1" ")
+Errno::EINVAL: Invalid argument - hw11text.rb
+end
+exit
+)
+)
+end
+
+        from (irb):1:in `initialize'
+        from (irb):1:in `open'
+        from (irb):1
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):008:0> ff=File.open("hw11text.rb")
+=> #<File:hw11text.rb>
+irb(main):009:0> ff.each_line
+=> #<Enumerator: #<File:hw11text.rb>:each_line>
+irb(main):010:0> ff.each_line.to_a
+=> ["No guilt in life, no fear in death,\n", "This is the power of Christ in me;
+\n", "From life's first cry to final breath.\n", "Jesus commands my destiny.\n",
+ "No power of hell, no scheme of man,\n", "Can ever pluck me from His hand;\n",
+"Till He returns or calls me home,\n", "Here in the power of Christ I'll stand."
+]
+irb(main):011:0> ff.each_line.to_a
+=> []
+irb(main):012:0> exit
+
+C:\Homework>ruby hw13.rb "hw11text.rb"
+would you like to write your results to a file?
+no
+--------------------
+No
+guilt
+in
+life,
+no
+fear
+in
+death,
+This
+is
+the
+power
+of
+Christ
+in
+me;
+From
+life's
+first
+cry
+to
+final
+breath.
+Jesus
+commands
+my
+destiny.
+No
+power
+of
+hell,
+no
+scheme
+of
+man,
+Can
+ever
+pluck
+me
+from
+His
+hand;
+Till
+He
+returns
+or
+calls
+me
+home,
+Here
+in
+the
+power
+of
+Christ
+I'll
+stand.
+--------------------
+NO
+GUILT
+IN
+LIFE,
+NO
+FEAR
+IN
+DEATH,
+THIS
+IS
+THE
+POWER
+OF
+CHRIST
+IN
+ME;
+FROM
+LIFE'S
+FIRST
+CRY
+TO
+FINAL
+BREATH.
+JESUS
+COMMANDS
+MY
+DESTINY.
+NO
+POWER
+OF
+HELL,
+NO
+SCHEME
+OF
+MAN,
+CAN
+EVER
+PLUCK
+ME
+FROM
+HIS
+HAND;
+TILL
+HE
+RETURNS
+OR
+CALLS
+ME
+HOME,
+HERE
+IN
+THE
+POWER
+OF
+CHRIST
+I'LL
+STAND.
+--------------------
+No-guilt-in-life,-no-fear-in-death,
+This-is-the-power-of-Christ-in-me;
+From-life's-first-cry-to-final-breath.
+Jesus-commands-my-destiny.
+No-power-of-hell,-no-scheme-of-man,
+Can-ever-pluck-me-from-His-hand;
+Till-He-returns-or-calls-me-home,
+Here-in-the-power-of-Christ-I'll-stand.
+--------------------
+12
+--------------------
+Can
+Christ
+Christ
+From
+He
+Here
+His
+I'll
+Jesus
+No
+No
+This
+Till
+breath.
+calls
+commands
+cry
+death,
+destiny.
+ever
+fear
+final
+first
+from
+guilt
+hand;
+hell,
+home,
+in
+in
+in
+in
+is
+life's
+life,
+man,
+me
+me
+me;
+my
+no
+no
+of
+of
+of
+of
+or
+pluck
+power
+power
+power
+returns
+scheme
+stand.
+the
+the
+to
+--------------------
+57
+--------------------
+57
+
+Thanks, and have a nice day!
+
+C:\Homework>ruby newclass.rb
+newclass.rb:8:in `<main>': undefined method `size' for #<Alpha:0x26ab280> (NoMet
+hodError)
+
+C:\Homework>ruby newclass.rb
+57
+
+C:\Homework>ruby hw13.rb "hw11text.rb"
+would you like to write your results to a file?
+no
+--------------------
+No
+guilt
+in
+life,
+no
+fear
+in
+death,
+This
+is
+the
+power
+of
+Christ
+in
+me;
+From
+life's
+first
+cry
+to
+final
+breath.
+Jesus
+commands
+my
+destiny.
+No
+power
+of
+hell,
+no
+scheme
+of
+man,
+Can
+ever
+pluck
+me
+from
+His
+hand;
+Till
+He
+returns
+or
+calls
+me
+home,
+Here
+in
+the
+power
+of
+Christ
+I'll
+stand.
+--------------------
+NO
+GUILT
+IN
+LIFE,
+NO
+FEAR
+IN
+DEATH,
+THIS
+IS
+THE
+POWER
+OF
+CHRIST
+IN
+ME;
+FROM
+LIFE'S
+FIRST
+CRY
+TO
+FINAL
+BREATH.
+JESUS
+COMMANDS
+MY
+DESTINY.
+NO
+POWER
+OF
+HELL,
+NO
+SCHEME
+OF
+MAN,
+CAN
+EVER
+PLUCK
+ME
+FROM
+HIS
+HAND;
+TILL
+HE
+RETURNS
+OR
+CALLS
+ME
+HOME,
+HERE
+IN
+THE
+POWER
+OF
+CHRIST
+I'LL
+STAND.
+--------------------
+No-guilt-in-life,-no-fear-in-death,
+This-is-the-power-of-Christ-in-me;
+From-life's-first-cry-to-final-breath.
+Jesus-commands-my-destiny.
+No-power-of-hell,-no-scheme-of-man,
+Can-ever-pluck-me-from-His-hand;
+Till-He-returns-or-calls-me-home,
+Here-in-the-power-of-Christ-I'll-stand.
+--------------------
+12
+--------------------
+Can
+Christ
+Christ
+From
+He
+Here
+His
+I'll
+Jesus
+No
+No
+This
+Till
+breath.
+calls
+commands
+cry
+death,
+destiny.
+ever
+fear
+final
+first
+from
+guilt
+hand;
+hell,
+home,
+in
+in
+in
+in
+is
+life's
+life,
+man,
+me
+me
+me;
+my
+no
+no
+of
+of
+of
+of
+or
+pluck
+power
+power
+power
+returns
+scheme
+stand.
+the
+the
+to
+--------------------
+57
+--------------------
+57
+
+Thanks, and have a nice day!
+
+C:\Homework>ruby newclass.rb
+newclass.rb:5:in `<main>': uninitialized constant Alpha (NameError)
+
+C:\Homework>ruby newclass.rb
+C:/Homework/class Alpha.rb:8:in `count_words': undefined method `split' for #<Fi
+le:hw11text.rb> (NoMethodError)
+        from newclass.rb:7:in `<main>'
+
+C:\Homework>ruby hw13.rb "hw11text.rb" -spl -up -sub -pct
+would you like to write your results to a file?
+no
+--------------------
+--------------------
+--------------------
+
+--------------------
+0
+--------------------
+Can
+Christ
+Christ
+From
+He
+Here
+His
+I'll
+Jesus
+No
+No
+This
+Till
+breath.
+calls
+commands
+cry
+death,
+destiny.
+ever
+fear
+final
+first
+from
+guilt
+hand;
+hell,
+home,
+in
+in
+in
+in
+is
+life's
+life,
+man,
+me
+me
+me;
+my
+no
+no
+of
+of
+of
+of
+or
+pluck
+power
+power
+power
+returns
+scheme
+stand.
+the
+the
+to
+--------------------
+0
+--------------------
+------------------------------
+57
+------------------------------
+
+Thanks, and have a nice day!
+
+C:\Homework>ruby counter_test.rb
+C:/RailsInstaller/Ruby1.9.3/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:
+36:in `require': cannot load such file -- minitestutorun (LoadError)
+        from C:/RailsInstaller/Ruby1.9.3/lib/ruby/site_ruby/1.9.1/rubygems/custo
+m_require.rb:36:in `require'
+        from counter_test.rb:1:in `<main>'
+
+C:\Homework>ruby counter_test.rb
+Run options: --seed 34697
+
+# Running tests:
+
+E
+
+Finished tests in 0.002000s, 500.0000 tests/s, 0.0000 assertions/s.
+
+  1) Error:
+test_count_words(CounterTest):
+RuntimeError:
+    counter_test.rb:6:in `test_count_words'
+
+1 tests, 0 assertions, 0 failures, 1 errors, 0 skips
+
+C:\Homework>ruby counter_test.rb
+Run options: --seed 25467
+
+# Running tests:
+
+.
+
+Finished tests in 0.005001s, 199.9600 tests/s, 0.0000 assertions/s.
+
+1 tests, 0 assertions, 0 failures, 0 errors, 0 skips
+
+C:\Homework>irb
+irb(main):001:0> TestCase.methods
+NameError: uninitialized constant TestCase
+        from (irb):1
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):002:0> require "minitest"
+LoadError: cannot load such file -- minitest
+        from C:/RailsInstaller/Ruby1.9.3/lib/ruby/site_ruby/1.9.1/rubygems/custo
+m_require.rb:36:in `require'
+        from C:/RailsInstaller/Ruby1.9.3/lib/ruby/site_ruby/1.9.1/rubygems/custo
+m_require.rb:36:in `require'
+        from (irb):2
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):003:0> require 'minitest'
+LoadError: cannot load such file -- minitest
+        from C:/RailsInstaller/Ruby1.9.3/lib/ruby/site_ruby/1.9.1/rubygems/custo
+m_require.rb:36:in `require'
+        from C:/RailsInstaller/Ruby1.9.3/lib/ruby/site_ruby/1.9.1/rubygems/custo
+m_require.rb:36:in `require'
+        from (irb):3
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):004:0> require 'minitest
+irb(main):005:0' '
+LoadError: cannot load such file -- minitest
+
+        from C:/RailsInstaller/Ruby1.9.3/lib/ruby/site_ruby/1.9.1/rubygems/custo
+m_require.rb:36:in `require'
+        from C:/RailsInstaller/Ruby1.9.3/lib/ruby/site_ruby/1.9.1/rubygems/custo
+m_require.rb:36:in `require'
+        from (irb):5
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):006:0> require 'minitest\unit'
+=> true
+irb(main):007:0> MiniTest::Unit.methods
+=> [:after_tests, :autorun, :output, :out, :output=, :runner=, :runner, :plugins
+, :allocate, :new, :superclass, :freeze, :===, :==, :<=>, :<, :<=, :>, :>=, :to_
+s, :included_modules, :include?, :name, :ancestors, :instance_methods, :public_i
+nstance_methods, :protected_instance_methods, :private_instance_methods, :consta
+nts, :const_get, :const_set, :const_defined?, :const_missing, :class_variables,
+:remove_class_variable, :class_variable_get, :class_variable_set, :class_variabl
+e_defined?, :public_constant, :private_constant, :module_exec, :class_exec, :mod
+ule_eval, :class_eval, :method_defined?, :public_method_defined?, :private_metho
+d_defined?, :protected_method_defined?, :public_class_method, :private_class_met
+hod, :autoload, :autoload?, :instance_method, :public_instance_method, :nil?, :=
+~, :!~, :eql?, :hash, :class, :singleton_class, :clone, :dup, :initialize_dup, :
+initialize_clone, :taint, :tainted?, :untaint, :untrust, :untrusted?, :trust, :f
+rozen?, :inspect, :methods, :singleton_methods, :protected_methods, :private_met
+hods, :public_methods, :instance_variables, :instance_variable_get, :instance_va
+riable_set, :instance_variable_defined?, :instance_of?, :kind_of?, :is_a?, :tap,
+ :send, :public_send, :respond_to?, :respond_to_missing?, :extend, :display, :me
+thod, :public_method, :define_singleton_method, :object_id, :to_enum, :enum_for,
+ :equal?, :!, :!=, :instance_eval, :instance_exec, :__send__, :__id__]
+irb(main):008:0> end
+SyntaxError: (irb):8: syntax error, unexpected keyword_end
+        from C:/RailsInstaller/Ruby1.9.3/bin/irb:12:in `<main>'
+irb(main):009:0> exit
+
+C:\Homework>ruby counter_test.rb
+Run options: --seed 54688
+
+# Running tests:
+
+.
+
+Finished tests in 0.004000s, 250.0000 tests/s, 250.0000 assertions/s.
+
+1 tests, 1 assertions, 0 failures, 0 errors, 0 skips
+
+C:\Homework>ruby counter_test.rb
+Run options: --seed 59482
+
+# Running tests:
+
+..
+
+Finished tests in 0.004000s, 500.0000 tests/s, 250.0000 assertions/s.
+
+2 tests, 1 assertions, 0 failures, 0 errors, 0 skips
+
+C:\Homework>ruby counter_test.rb
+Run options: --seed 8793
+
+# Running tests:
+
+E.
+
+Finished tests in 0.005001s, 399.9200 tests/s, 199.9600 assertions/s.
+
+  1) Error:
+test_count_words(CounterTest):
+NoMethodError: undefined method `assert_equals' for #<CounterTest:0x1ea2180>
+    counter_test.rb:14:in `test_count_words'
+
+2 tests, 1 assertions, 0 failures, 1 errors, 0 skips
+
+C:\Homework>ruby counter_test.rb
+Run options: --seed 37956
+
+# Running tests:
+
+..
+
+Finished tests in 0.004000s, 500.0000 tests/s, 500.0000 assertions/s.
+
+2 tests, 2 assertions, 0 failures, 0 errors, 0 skips
+
+C:\Homework>ruby counter_test.rb
+Run options: --seed 31392
+
+# Running tests:
+
+..
+
+Finished tests in 0.005000s, 400.0000 tests/s, 400.0000 assertions/s.
+
+2 tests, 2 assertions, 0 failures, 0 errors, 0 skips
+
+C:\Homework>ruby counter_test.rb
+Run options: --seed 32150
+
+# Running tests:
+
+...
+
+Finished tests in 0.005000s, 600.0000 tests/s, 600.0000 assertions/s.
+
+3 tests, 3 assertions, 0 failures, 0 errors, 0 skips
+
+C:\Homework>ruby counter_test.rb
+Run options: --seed 33340
+
+# Running tests:
+
+.F.
+
+Finished tests in 0.193011s, 15.5432 tests/s, 15.5432 assertions/s.
+
+  1) Failure:
+test_count_words_multiple_lines(CounterTest) [counter_test.rb:21]:
+Expected: 10
+  Actual: 5
+
+3 tests, 3 assertions, 1 failures, 0 errors, 0 skips
+
+C:\Homework>
+
