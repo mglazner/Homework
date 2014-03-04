@@ -52,7 +52,7 @@ PUNCT = [".", ",", "!", "'", "?",":",";","-","~"]
   end
   
   def file_results
-    output=(File.open("hw12output.txt","w"))
+    output=(File.open("hw12output.txt","w+"))
     unless @split==[]; output.puts @split; output.puts"-"*30; end
     unless @hyph==""; output.puts @hyph; output.puts"-"*30; end
     unless @upcs==[]; output.puts @upcs; output.puts"-"*30; end

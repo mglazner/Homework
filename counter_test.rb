@@ -23,8 +23,8 @@ class CounterTest < MiniTest::Unit::TestCase
 
   def test_count_punctuation
     counter=Counter.new
-    counter.count_punctuation("I was, like, ohm'gosh!")
-    assert_equal(4,counter.pcount)
+    counter.count_punctuation("I was, like, oh'm'gosh!")
+    assert_equal(5,counter.pcount)
   end
 
   def test_count_punctuation_multiple_lines
@@ -39,7 +39,7 @@ class CounterTest < MiniTest::Unit::TestCase
     counter.replace_spaces("do you know the muffin man?")
     assert_equal("do~you~know~the~muffin~man?",counter.hyph)
   end
-     
+
   def test_replace_spaces_multiple_lines
     counter=Counter.new
     counter.replace_spaces("do you know,\n")
@@ -55,9 +55,17 @@ class CounterTest < MiniTest::Unit::TestCase
 
   def test_alphabetize
     counter=Counter.new
-    counter.alphabetize("So, you think YOU can dance?")
-    assert_equal(["can","dance?","So,","think","you","YOU"],counter.alph)
+    counter.alphabetize("So, you think YOU can dance? yo?")
+    assert_equal(["can","dance?","So,","think","yo?","you","YOU"],counter.alph)
   end
+
+  def test_alphabetize_multiple_lines
+    counter=Counter.new
+    counter.alphabetize("So, you think YOU can dance? yo?")
+    counter.alphabetize("ya rock!")
+    assert_equal(["can","dance?","rock!","So,","think","ya","yo?","you","YOU"],counter.alph)
+  end
+
 
   def test_separate_lines
     counter=Counter.new

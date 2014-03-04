@@ -1,12 +1,6 @@
-#take tinybabylibrary and "use classes somewhere" make some portion of what you #are dealing with, a class, with some methods that make sense
-
-#e.g. take the portion that takes command line arguments and make a class that #takes care of all that stuff.
-#     the actual processing logic itself, "i have this string, and i want to chop #it up and ....
-
 require_relative "counter"
 
 f=File.open(ARGV[0])
-g=File.open(ARGV[0])
 counter=Counter.new
 
 should_split = true unless ARGV.any? {|s| s.include?('-spl')}
@@ -33,5 +27,5 @@ if answer=="screen";
   elsif answer=="file";
   counter.file_results
   else 
-    puts "\n  I asked for a simple yes or no. \n\n  Monkeys can do this. \n\n  NO SOUP FOR YOU!!";
+    puts "\n  I asked for a simple answer. \n\n  Monkeys can do this. \n\n  NO SOUP FOR YOU!!";
 end
