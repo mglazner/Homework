@@ -12,7 +12,6 @@ class Uppercase
   end
 
   def to_uppercase(f)
-    f.seek(0)
     f.each_line do |i|
       i.split.each do |j|
         @upcase<<j.upcase!
@@ -30,11 +29,13 @@ class Uppercase
     true unless argv.any? {|s| s.include?('-up')}
   end
 
-  def process(z,y,x,w)
-    z.to_uppercase(y) if z.should_upcase?(x)
-    if w=="file"; z.file_results
-      elsif w=="screen"; z.puts_results
+  def process(y,x,w)
+    to_uppercase(y) if should_upcase?(x)
+    if w=="file"; file_results
+      elsif w=="screen"; puts_results
     end
+
   end  
+
 end
 

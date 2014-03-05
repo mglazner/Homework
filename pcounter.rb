@@ -1,6 +1,6 @@
 class Pcounter
 
-PUNCT = [".", ",", "!", "'", "?",":",";","-","~"]
+  PUNCT = [".", ",", "!", "'", "?",":",";","-","~"]
 
   attr_reader :pcount
 
@@ -14,7 +14,6 @@ PUNCT = [".", ",", "!", "'", "?",":",";","-","~"]
   end
 
   def count_punctuation(f)
-    f.seek(0)
     f.each_line do |m|
       @pcount+=(m.split(//)-((m.split(//))-PUNCT)).length
     end
@@ -30,11 +29,13 @@ PUNCT = [".", ",", "!", "'", "?",":",";","-","~"]
     true unless argv.any? {|s| s.include?('-pct')}
   end
 
-  def process(z,y,x,w)
-    z.count_punctuation(y) if z.should_pcount?(x)
-    if w=="file"; z.file_results
-      elsif w=="screen"; z.puts_results
+  def process(y,x,w)
+    count_punctuation(y) if should_pcount?(x)
+    if w=="file"; file_results
+      elsif w=="screen"; puts_results
     end
-  end  
+
+  end 
+ 
 end
 

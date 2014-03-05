@@ -12,7 +12,6 @@ class Gsub_hyphen
   end
 
   def replace_spaces(f)
-    f.seek(0)
     f.each_line do |m|
       @hyph+=m.gsub(" ","~")
     end
@@ -28,11 +27,13 @@ class Gsub_hyphen
     true unless argv.any? {|s| s.include?('-sub')}
   end
 
-  def process(z,y,x,w)
-    z.replace_spaces(y) if z.should_gsub?(x)
-    if w=="file"; z.file_results
-      elsif w=="screen"; z.puts_results
+  def process(y,x,w)
+    replace_spaces(y) if should_gsub?(x)
+    if w=="file"; file_results
+      elsif w=="screen"; puts_results
     end
-  end  
+
+  end 
+
 end
 

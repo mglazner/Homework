@@ -12,7 +12,6 @@ class Sort
   end
 
   def alphabetize(f)
-    f.seek(0)
     f.each_line do |m|
       @alph+=m.split
     end
@@ -29,11 +28,13 @@ class Sort
     true unless argv.any? {|s| s.include?('-sort')}
   end
 
-  def process(z,y,x,w)
-    z.alphabetize(y) if z.should_sort?(x)
-    if w=="file"; z.file_results
-      elsif w=="screen"; z.puts_results
+  def process(y,x,w)
+    alphabetize(y) if should_sort?(x)
+    if w=="file"; file_results
+      elsif w=="screen"; puts_results
     end
+
   end  
+
 end
 
