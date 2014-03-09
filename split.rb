@@ -24,7 +24,9 @@ class Split
   end
 
   def should_split?(argv)
-    true unless argv.any? {|s| s.include?('-spl')}
+    if argv.include?("-spl"); false
+    else true  
+    end
   end
 
   def process(y,x,w)
@@ -32,7 +34,7 @@ class Split
     if w=="file"; file_results
       elsif w=="screen"; puts_results
     end
-
+    y.seek(0)
   end  
 
 end

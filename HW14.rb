@@ -6,27 +6,26 @@ require_relative "sort"
 require_relative "uppercase"
 
 f=File.open(ARGV[0])
-pcter=Pcounter.new
-wcter=Wcounter.new
+punctcounter=Pcounter.new
+wordcounter=Wcounter.new
 gsubber=Gsub_hyphen.new
 splitter=Split.new
 sorter=Sort.new
-uppercs=Uppercase.new
+uppercase=Uppercase.new
 
 puts "Would you like to write your results to a file or to the screen?"
 answer=$stdin.gets.chomp
 
-wcter.process(f,ARGV,answer); f.seek(0)
-pcter.process(f,ARGV,answer); f.seek(0)
-gsubber.process(f,ARGV,answer); f.seek(0)
-splitter.process(f,ARGV,answer); f.seek(0)
-sorter.process(f,ARGV,answer); f.seek(0)
-uppercs.process(f,ARGV,answer)
+wordcounter.process(f,ARGV,answer)
+punctcounter.process(f,ARGV,answer)
+gsubber.process(f,ARGV,answer)
+splitter.process(f,ARGV,answer)
+sorter.process(f,ARGV,answer)
+uppercase.process(f,ARGV,answer)
 
-if answer=="file"; puts "\n Your output is under C:/Homework/results\n\n   Thank you!"; 
-  elsif answer=="screen"; "\n  Thank you!"
+if answer=="file"; puts "\n Your output is under C:/Homework/results"; 
+  elsif answer=="screen"; "\n  Thank you!";
   else puts "\n  You fail at life. \n\n  Go home, loser.";
 end
 
-#I am aware that they are back-, not forward- slashes, but it was giving me 'tude.
 

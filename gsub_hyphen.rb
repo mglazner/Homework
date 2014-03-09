@@ -24,7 +24,9 @@ class Gsub_hyphen
   end
 
   def should_gsub?(argv)
-    true unless argv.any? {|s| s.include?('-sub')}
+    if argv.include?("-sub"); false
+    else true  
+    end
   end
 
   def process(y,x,w)
@@ -32,8 +34,7 @@ class Gsub_hyphen
     if w=="file"; file_results
       elsif w=="screen"; puts_results
     end
-
+    y.seek(0)
   end 
 
 end
-

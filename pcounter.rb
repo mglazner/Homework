@@ -26,7 +26,9 @@ class Pcounter
   end
 
   def should_pcount?(argv)
-    true unless argv.any? {|s| s.include?('-pct')}
+    if argv.include?("-pct"); false
+    else true  
+    end
   end
 
   def process(y,x,w)
@@ -34,7 +36,7 @@ class Pcounter
     if w=="file"; file_results
       elsif w=="screen"; puts_results
     end
-
+    y.seek(0)
   end 
  
 end

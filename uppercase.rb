@@ -26,7 +26,9 @@ class Uppercase
   end
 
   def should_upcase?(argv)
-    true unless argv.any? {|s| s.include?('-up')}
+    if argv.include?("-up"); false
+    else true  
+    end
   end
 
   def process(y,x,w)
@@ -34,7 +36,7 @@ class Uppercase
     if w=="file"; file_results
       elsif w=="screen"; puts_results
     end
-
+    y.seek(0)
   end  
 
 end

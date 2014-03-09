@@ -25,7 +25,9 @@ class Sort
   end
 
   def should_sort?(argv)
-    true unless argv.any? {|s| s.include?('-sort')}
+    if argv.include?("-sort"); false
+    else true  
+    end
   end
 
   def process(y,x,w)
@@ -33,8 +35,8 @@ class Sort
     if w=="file"; file_results
       elsif w=="screen"; puts_results
     end
-
+    y.seek(0)
   end  
-
+ 
 end
 
