@@ -1,10 +1,10 @@
 require 'minitest\autorun'
 require_relative "gsub_hyphen"
 
-class Gsub_hyphen_test < MiniTest::Unit::TestCase
+class GsubHyphen_test < MiniTest::Unit::TestCase
 
   def test_initialize_gsub
-    gsub=Gsub_hyphen.new
+    gsub=GsubHyphen.new
     refute_nil(gsub)
   end
   

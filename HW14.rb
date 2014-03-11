@@ -3,7 +3,7 @@ require_relative "wcounter"
 require_relative "gsub_hyphen"
 require_relative "split"
 require_relative "sort"
-require_relative "uppercase"
+require_relative "counters\uppercase"
 
 f=File.open(ARGV[0])
 punctcounter=Pcounter.new

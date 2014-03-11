@@ -1,4 +1,4 @@
-class Gsub_hyphen
+class GsubHyphen
  
   attr_reader :hyph
 
@@ -24,9 +24,15 @@ class Gsub_hyphen
   end
 
   def should_gsub?(argv)
-    if argv.include?("-sub"); false
-    else true  
+    if argv.include?("-sub")
+      false
+    else
+      true  
     end
+#    return false if argv.include?("-sub")
+#    true
+
+##    !argv.include?("-sub")  #.include? is inherently boolean
   end
 
   def process(y,x,w)
