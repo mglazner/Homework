@@ -6,15 +6,17 @@ class Split
     @split=[]
   end
 
+  def calculate(x,y)
+    split_on_spaces(x) if should_split?(y)
+  end
+
   def puts_results
     puts @split 
     puts "-"*30 
   end
 
   def split_on_spaces(f)
-    f.each_line do |m|
-      @split+=m.split
-    end
+      @split+=f.split
   end
 
   def file_results    

@@ -1,8 +1,8 @@
-require_relative "pcounter"
-require_relative "wcounter"
-require_relative "gsub_hyphen"
-require_relative "split"
-require_relative "sort"
+require_relative "counters\pcounter"
+require_relative "counters\wcounter"
+require_relative "counters\gsub_hyphen"
+require_relative "counters\split"
+require_relative "counters\sort"
 require_relative "counters\uppercase"
 
 f=File.open(ARGV[0])

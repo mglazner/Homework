@@ -17,8 +17,8 @@ class Pcounter_test < MiniTest::Unit::TestCase
   def test_count_punctuation_multiple_lines
     test=Pcounter.new
     test.count_punctuation("testin' stuff, y'all:")
-    test.count_punctuation("megan glazner, IS! amazing?")
-    assert_equal(7,test.pcount)
+    test.count_punctuation("megan: glazner, IS! amazing?")
+    assert_equal(8,test.pcount)
   end
 
   def test_true_should_pcount?

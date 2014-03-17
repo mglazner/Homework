@@ -6,6 +6,10 @@ class Sort
     @alph=[]
   end
 
+  def calculate(x,y)
+    alphabetize(x) if should_sort?(y)
+  end
+
   def puts_results
     p @alph 
     puts "-"*30 

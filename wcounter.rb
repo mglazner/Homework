@@ -6,6 +6,10 @@ class Wcounter
     @wcount=0
   end
 
+  def calculate(x,y)
+    count_words(x) if should_wcount?(y)
+  end
+
   def puts_results
     puts " \n"
     p @wcount 
@@ -13,9 +17,7 @@ class Wcounter
   end
 
   def count_words(f)
-    f.each_line do |m|
-      @wcount+=m.split.size
-    end 
+    @wcount+=f.split.size
   end
 
   def file_results    

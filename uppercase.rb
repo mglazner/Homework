@@ -6,16 +6,18 @@ class Uppercase
     @upcase=[]
   end
 
+  def calculate(x,y)
+    to_uppercase(x) if should_upcase?(y)
+  end
+
   def puts_results
     p @upcase
     puts "-"*30 
   end
 
   def to_uppercase(f)
-    f.each_line do |i|
-      i.split.each do |j|
+    f.split.each do |j|
         @upcase<<j.upcase!
-      end
     end
   end
 
