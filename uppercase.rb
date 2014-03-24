@@ -11,8 +11,10 @@ class Uppercase
   end
 
   def puts_results
-    p @upcase
-    puts "-"*30 
+    if @upcase!=[]
+      puts @upcase
+      puts "-"*30
+    end 
   end
 
   def to_uppercase(f)
@@ -25,10 +27,12 @@ class Uppercase
   end
 
 
-  def file_results    
-    output=(File.open("results","a+"))
-    output.puts @upcase
-    output.puts"-"*30   
+  def file_results 
+    if @upcase!=[]   
+      output=(File.open("results","a+"))
+      output.puts @upcase
+      output.puts"-"*30 
+    end  
   end
 
   def should_upcase?(argv)

@@ -13,9 +13,11 @@ class Pcounter
   end
 
   def puts_results
-    puts "\n\n"
-    p @pcount 
-    puts "-"*30 
+    if @pcount!=0
+      puts "\n\n"
+      p @pcount 
+      puts "-"*30 
+    end
   end
 
   def count_punctuation(f)
@@ -26,10 +28,12 @@ class Pcounter
   end
 
 
-  def file_results    
-    output=(File.open("results","a+"))
-    output.puts @pcount 
-    output.puts"-"*30
+  def file_results   
+    if @pcount!=0 
+      output=(File.open("results","a+"))
+      output.puts @pcount 
+      output.puts"-"*30
+    end
   end
 
   def should_pcount?(argv)

@@ -11,8 +11,10 @@ class Sort
   end
 
   def puts_results
-    p @alph 
-    puts "-"*30 
+    if @alph!=[]
+      p @alph 
+      puts "-"*30 
+    end
   end
 
   def alphabetize(f)
@@ -22,10 +24,12 @@ class Sort
     @alph.sort_by! {|n| n.downcase}
   end
 
-  def file_results    
-    output=(File.open("results","a+"))
-    output.puts @alph 
-    output.puts"-"*30   
+  def file_results
+    if @alph!=[]    
+      output=(File.open("results","a+"))
+      output.puts @alph 
+      output.puts"-"*30   
+    end
   end
 
   def should_sort?(argv)

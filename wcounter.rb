@@ -11,9 +11,11 @@ class Wcounter
   end
 
   def puts_results
-    puts " \n"
-    p @wcount 
-    puts "-"*30 
+    if @wcount!=0
+      puts " \n"
+      p @wcount 
+      puts "-"*30 
+    end
   end
 
   def count_words(f)
@@ -24,12 +26,14 @@ class Wcounter
   end
 
 
-  def file_results    
-    output=(File.open("results","w"))
-    output.puts "Here are your results:\n\n"
-    output.puts"-"*30
-    output.puts @wcount 
-    output.puts"-"*30
+  def file_results
+    if @wcount!=0    
+      output=(File.open("results","w"))
+      output.puts "Here are your results:\n\n"
+      output.puts"-"*30
+      output.puts @wcount 
+      output.puts"-"*30
+    end
   end
 
   def should_wcount?(argv)

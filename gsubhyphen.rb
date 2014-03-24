@@ -19,8 +19,10 @@ class GsubHyphen
   
 
   def puts_results
-    puts @hyph 
-    puts "-"*30 
+    if @hyph!=""
+      puts @hyph 
+      puts "-"*30 
+    end
   end
 
   def should_gsub?(argv)
@@ -32,10 +34,12 @@ class GsubHyphen
      # !argv.include?("-sub")  #.include? is inherently boolean
   end
 
-  def file_results    
-    output=(File.open("results","a+"))
-    output.puts @hyph 
-    output.puts"-"*30   
+  def file_results  
+    if @hyph!=""  
+      output=(File.open("results","a+"))
+      output.puts @hyph 
+      output.puts"-"*30  
+    end 
   end
 
   def process(y,x,w)

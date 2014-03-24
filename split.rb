@@ -11,8 +11,10 @@ class Split
   end
 
   def puts_results
-    puts @split 
-    puts "-"*30 
+    if @split!=[]
+      puts @split 
+      puts "-"*30 
+    end
   end
 
   def split_on_spaces(f)
@@ -23,10 +25,12 @@ class Split
   end
 
 
-  def file_results    
-    output=(File.open("results","a+"))
-    output.puts @split 
-    output.puts"-"*30   
+  def file_results 
+    if @split!=[]   
+      output=(File.open("results","a+"))
+      output.puts @split 
+      output.puts"-"*30   
+    end
   end
 
   def should_split?(argv)
