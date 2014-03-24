@@ -10,17 +10,21 @@ class Pcounter
 
   def calculate(x,y)
     count_punctuation(x) if should_pcount?(y)
-    end
   end
 
   def puts_results
+    puts "\n\n"
     p @pcount 
     puts "-"*30 
   end
 
-  def count_punctuation(m)
-    @pcount+=(m.split(//)-((m.split(//))-PUNCT)).length
+  def count_punctuation(f)
+    f.seek(0)
+    f.each_line do |m|
+      @pcount+=(m.split(//)-((m.split(//))-PUNCT)).length
+    end
   end
+
 
   def file_results    
     output=(File.open("results","a+"))
@@ -42,6 +46,6 @@ class Pcounter
       elsif w=="screen"; puts_results
     end
     y.seek(0)
-  end 
-
-
+  end
+ 
+end

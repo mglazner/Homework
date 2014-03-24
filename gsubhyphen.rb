@@ -10,9 +10,13 @@ class GsubHyphen
     replace_spaces(x) if should_gsub?(y)
   end
 
-  def replace_spaces(k)
-    @hyph+=k.gsub(" ","~")
-  end  
+  def replace_spaces(f)
+    f.seek(0)
+    f.each_line do |m|
+      @hyph+=m.gsub(" ","~")
+    end
+  end
+  
 
   def puts_results
     puts @hyph 

@@ -16,8 +16,12 @@ class Split
   end
 
   def split_on_spaces(f)
-      @split+=f.split
+    f.seek(0)
+    f.each_line do |m|
+      @split+=m.split
+    end
   end
+
 
   def file_results    
     output=(File.open("results","a+"))

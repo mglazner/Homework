@@ -16,10 +16,14 @@ class Uppercase
   end
 
   def to_uppercase(f)
-    f.split.each do |j|
+    f.seek(0)
+    f.each_line do |i|
+      i.split.each do |j|
         @upcase<<j.upcase!
+      end
     end
   end
+
 
   def file_results    
     output=(File.open("results","a+"))

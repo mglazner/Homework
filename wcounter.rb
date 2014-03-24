@@ -17,8 +17,12 @@ class Wcounter
   end
 
   def count_words(f)
-    @wcount+=f.split.size
+    f.seek(0)
+    f.each_line do |m|
+      @wcount+=m.split.size
+    end
   end
+
 
   def file_results    
     output=(File.open("results","w"))
