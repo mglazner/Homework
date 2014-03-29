@@ -6,25 +6,41 @@ require_relative "sort"
 require_relative "uppercase"
 
 f=File.open(ARGV[0])
-output=(File.open("results","a+"))
+
 punctcounter=Pcounter.new
 wordcounter=Wcounter.new
 gsubber=GsubHyphen.new
 splitter=Split.new
 sorter=Sort.new
 uppercase=Uppercase.new
-input=[punctcounter,wordcounter,gsubber,splitter,sorter,uppercase]
+input=[wordcounter,punctcounter,gsubber,sorter,splitter,uppercase]
 
 puts "Would you like to write your results to a file or to the screen?"
 answer=$stdin.gets.chomp
 
-if answer=="file"
-  puts "Your results are on the C drive under the folder 'Homework' in the file 'results'."
-  elsif answer=="screen"
-    puts "Thank you!"
-  else
-    puts "\n\nYou are a moron. Try again.\n"
+f.each_line do |line|
+  input.each do |x|
+    x.process_line(line,ARGV)
+  end
+end
+
+if answer=="file"  
+  output=(File.open("results","w"))
+  puts "Your results are in C:\\Homework\\results"
+elsif answer=="screen"
+  output=$stdout
+end
+
+output.puts "\n\nHere are your results:\n\n"
+output.puts"-"*30
+
+input.each do |m|
+    m.file_results(output)
 end
 
 
-input.map{|x| x.process(f,ARGV,answer)}
+
+
+
+
+#input.each{|x| x.process(f,ARGV,answer,output)}

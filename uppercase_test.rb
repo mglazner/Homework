@@ -8,17 +8,17 @@ class Uppercase_test < MiniTest::Unit::TestCase
     refute_nil(upcs)
   end
   
-  def test_uppercase
+  def test_process_line
     upcs=Uppercase.new
-    upcs.to_uppercase("testing stuff, yo")
-    assert_equal(["TESTING","STUFF,","YO"],upcs.upcase)
+    upcs.process_line("testing stuff yo","whatever")
+    assert_equal(["TESTING STUFF YO"],upcs.upcase)
   end
 
-  def test_uppercase_multiple_lines
+  def test_process_multiple_lines
     upcs=Uppercase.new
-    upcs.to_uppercase("testing stuff, yo")
-    upcs.to_uppercase("megan glazner")
-    assert_equal(["TESTING","STUFF,","YO","MEGAN","GLAZNER"],upcs.upcase)
+    upcs.process_line("testing stuff yo","whatever")
+    upcs.process_line("megan glazner","whatever")
+    assert_equal(["TESTING STUFF YO","MEGAN GLAZNER"],upcs.upcase)
   end
 
   def test_true_should_upcase?

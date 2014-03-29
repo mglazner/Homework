@@ -8,16 +8,16 @@ class Sort_test < MiniTest::Unit::TestCase
     refute_nil(sort)
   end
   
-  def test_alphabetize
+  def test_process_line
     sort=Sort.new
-    sort.alphabetize("a z q r")
+    sort.process_line("a z q r","whatever")
     assert_equal(["a","q","r","z"],sort.alph)
   end
 
-  def test_alphabetize_multiple_lines
+  def test_process_multiple_lines
     sort=Sort.new
-    sort.alphabetize("a z Q r")
-    sort.alphabetize("B y t e")
+    sort.process_line("a z Q r","whatever")
+    sort.process_line("B y t e","whatever")
     assert_equal(["a","B","e","Q","r","t","y","z"],sort.alph)
   end
 

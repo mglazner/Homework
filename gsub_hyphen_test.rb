@@ -8,16 +8,16 @@ class GsubHyphen_test < MiniTest::Unit::TestCase
     refute_nil(gsub)
   end
   
-  def test_replace_spaces
+  def test_process_line
     gsub=GsubHyphen.new
-    gsub.replace_spaces("Yo, homie Gee")
+    gsub.process_line("Yo, homie Gee","whatever")
     assert_equal("Yo,~homie~Gee",gsub.hyph)
   end
 
-  def test_replace_spaces_multiple_lines
+  def test_process_multiple_lines
     gsub=GsubHyphen.new
-    gsub.replace_spaces("Yo, homie Gee.")
-    gsub.replace_spaces("How's it hangin'?")
+    gsub.process_line("Yo, homie Gee.","whatever")
+    gsub.process_line("How's it hangin'?","whatever")
     assert_equal("Yo,~homie~Gee.How's~it~hangin'?",gsub.hyph)
   end
 
@@ -27,8 +27,8 @@ class GsubHyphen_test < MiniTest::Unit::TestCase
   end
 
   def test_false_should_gsub?
-    gsub=GsubHyphen.new
-    assert_equal(false,gsub.should_gsub?("-sub"))
+    test=GsubHyphen.new
+    assert_equal(false,test.should_gsub?("-gsub"))
   end
 
 end

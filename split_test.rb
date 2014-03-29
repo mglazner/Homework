@@ -8,20 +8,20 @@ class Split_test < MiniTest::Unit::TestCase
     refute_nil(test)
   end
   
-  def test_split_on_spaces
+  def test_process_line
     test=Split.new
-    test.split_on_spaces("Trying new things, yo")
+    test.process_line("Trying new things, yo","whatever")
     assert_equal(["Trying","new","things,","yo"],test.split)
   end
 
-  def test_split_multiple_lines
+  def test_process_multiple_lines
     test=Split.new
-    test.split_on_spaces("Trying things, yo")
-    test.split_on_spaces("Yeah, y'all!")
-    assert_equal(["Trying","things,","yo","Yeah,","y'all!"],test.split)
+    test.process_line("Trying things","whatever")
+    test.process_line("Yeah, y'all!","whatever")
+    assert_equal(["Trying","things","Yeah,","y'all!"],test.split)
   end
 
-  def test_true_should_split?
+ def test_true_should_split?
     test=Split.new
     assert_equal(true,test.should_split?("yodel"))
   end

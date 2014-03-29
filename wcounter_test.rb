@@ -8,17 +8,17 @@ class Wcounter_test < MiniTest::Unit::TestCase
     refute_nil(wctr)
   end
   
-  def test_count_words
+  def test_process_line
     wctr=Wcounter.new
-    wctr.count_words("how much wood should a wood chuck, chuck?")
-    assert_equal(8,wctr.wcount)
+    wctr.process_line("That's not a thing.","whatever")
+    assert_equal(4,wctr.wcount)
   end
 
-  def test_count_words_multiple_lines
+  def test_process_multiple_lines
     wctr=Wcounter.new
-    wctr.count_words("how much wood should a wood chuck, chuck?")
-    wctr.count_words("Seriously, do you know? 'Cause I don't")
-    assert_equal(15,wctr.wcount)
+    wctr.process_line("That's not a thing.","whatever")
+    wctr.process_line("That's not a thing.","whatever")
+    assert_equal(8,wctr.wcount)
   end
 
   def test_true_should_wcount?

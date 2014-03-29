@@ -8,17 +8,17 @@ class Pcounter_test < MiniTest::Unit::TestCase
     refute_nil(test)
   end
   
-  def test_count_punctuation
+  def test_process_line
     test=Pcounter.new
-    test.count_punctuation("!testin' stuff, yo!")
+    test.process_line("Trying! new~ things, yo.","whatever")
     assert_equal(4,test.pcount)
   end
 
-  def test_count_punctuation_multiple_lines
+  def test_process_multiple_lines
     test=Pcounter.new
-    test.count_punctuation("testin' stuff, y'all:")
-    test.count_punctuation("megan: glazner, IS! amazing?")
-    assert_equal(8,test.pcount)
+    test.process_line("~testin' stuff, y'all:","whatever")
+    test.process_line("megan: glazner, IS! amazing?","whatever")
+    assert_equal(9,test.pcount)
   end
 
   def test_true_should_pcount?
