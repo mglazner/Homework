@@ -1,29 +1,17 @@
-class GsubHyphen
- 
-  attr_reader :hyph
+require_relative "counter"
+
+class GsubHyphen < Counter
 
   def initialize
-    @hyph=""
+    @data=""
+    @option_name="-gsub"
   end
 
   def process_line(line,argv)
-    if should_gsub?(argv)
-      @hyph+=line.gsub(" ","~")
+    if should_process?(argv)
+      @data+=line.gsub(" ","~")
     end
   end  
-
-  def should_gsub?(argv)
-    if argv.include?("-gsub"); false
-    else true  
-    end
-  end
-
-  def file_results(output)  
-    if @hyph!=""  
-      output.puts @hyph 
-      output.puts"-"*30  
-    end 
-  end
 
 end
 

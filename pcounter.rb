@@ -1,31 +1,17 @@
-class Pcounter
+require_relative "counter"
 
-  attr_reader :pcount
+class Pcounter < Counter
 
   PUNCT=[".", ",", "!", "'", "?",":",";","-","~"]
 
   def initialize
-    @pcount=0
+    @data=0
+    @option_name="-pct"
   end
 
   def process_line(line,argv)
-    if should_pcount?(argv)
-      @pcount+=(line.split(//)-((line.split(//))-PUNCT)).length
-    end
-  end
-
-  def file_results(output) 
-    if @pcount!=0 
-      output.puts @pcount 
-      output.puts"-"*30
-    end
-  end
-
-  def should_pcount?(argv)
-    if argv.include?("-pct")
-      false
-    else
-      true  
+    if should_process?(argv)
+      @data+=(line.split(//)-((line.split(//))-PUNCT)).length
     end
   end
  
