@@ -1,17 +1,13 @@
+
 class Myapp
 
-  HEROES={
-	"/Ironman"=>"Tony Stark",
-	"/CaptainAmerica"=>"Steven Rogers",
-	"/TheHulk"=>"Bruce Banner",
-	"/TheAvengers"=>"Secret identities are SO last year."
-  }
-  
   def call(env)
     p env
-    input=(env["PATH_INFO"])
-    if HEROES[input]!=nil
-      success(HEROES[input])
+    if env["PATH_INFO"]=="/"
+      [404,{"Content-Type"=>"text"},["Please try again."]]
+    elsif File.exists?("."+(env["PATH_INFO"]))
+      result=File.read("."+(env["PATH_INFO"]))
+      success(result)       
     else 
       [404,{"Content-Type"=>"text"},["Please try again."]]
     end
@@ -21,8 +17,6 @@ class Myapp
     [200,{"Content-Type"=>"text"},[name]] 
   end
 
-
 end
-
 
 
