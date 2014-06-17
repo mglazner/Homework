@@ -29,43 +29,43 @@ class MyappTest < MiniTest::Unit::TestCase
   def test_tonystark
     fred=Myapp.new
     test=fred.call({"PATH_INFO"=>"/Tony_Stark.txt"})
-    assert(File.read("Tony_Stark.txt").include?("bathroom in your suit?"))
+    assert(test[2][0].include?("bathroom in your suit?"))
   end
   
   def test_steverogers
     fred=Myapp.new
-    test=fred.call({"PATH_INFO"=>"/Steve_Rogers.txt"})	
-    assert(File.read('Steve_Rogers.txt').include?("too late to use the bathroom?"))
+    test=fred.call({"PATH_INFO"=>"/Steve_Rogers.txt"})
+    assert(test[2][0].include?("too late to use the bathroom?"))
   end
   
   def test_brucebanner
     fred=Myapp.new
-    test=fred.call({"PATH_INFO"=>"/Bruce_Banner.txt"})	
-    assert(File.read('Bruce_Banner.txt').include?("Puny god"))
+    test=fred.call({"PATH_INFO"=>"/Bruce_Banner.txt"})
+    assert(test[2][0].include?("Puny god"))
   end
   
   def test_theavengers
     fred=Myapp.new
-    test=fred.call({"PATH_INFO"=>"/The_Avengers.txt"})	
-    assert(File.read('The_Avengers.txt').include?("takes us a while to get any traction"))
+    test=fred.call({"PATH_INFO"=>"/The_Avengers.txt"})
+    assert(test[2][0].include?("takes us a while to get any traction"))
   end
   
     def test_clintbarton
     fred=Myapp.new
-    test=fred.call({"PATH_INFO"=>"/Clint_Barton.txt"})	
-    assert(File.read('Clint_Barton.txt').include?("remember Budapest very differently"))
+    test=fred.call({"PATH_INFO"=>"/Clint_Barton.txt"})
+    assert(test[2][0].include?("remember Budapest very differently"))
   end
   
     def test_natasharomanoff
     fred=Myapp.new
-    test=fred.call({"PATH_INFO"=>"/Natasha_Romanoff.txt"})	
-    assert(File.read('Natasha_Romanoff.txt').include?("while Natasha whips butt"))
+    test=fred.call({"PATH_INFO"=>"/Natasha_Romanoff.txt"})
+    assert(test[2][0].include?("while Natasha whips butt"))
   end
   
     def test_thorodinsson
     fred=Myapp.new
     test=fred.call({"PATH_INFO"=>"/Thor_Odinsson.txt"})	
-    assert(File.read('Thor_Odinsson.txt').include?("80 people in two days"))
+    assert(test[2][0].include?("80 people in two days"))
   end
   
 end

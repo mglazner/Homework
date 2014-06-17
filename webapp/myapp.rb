@@ -13,7 +13,7 @@ SECRETID=
 
   def call(env)
     p env
-	  template=ERB.new(File.read("template.erb"))
+    template=ERB.new(File.read("template.erb"))
     if env["PATH_INFO"]=="/"
       [404,{"Content-Type"=>"text"},["Please try again."]]
     elsif File.exists?("."+(env["PATH_INFO"]))
@@ -35,5 +35,3 @@ SECRETID=
 
 end
 
-#all my tests are broken. fix them.
-#EC-- i put the hash for the secret ids but we could put it in the file itself
