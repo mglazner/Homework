@@ -1,6 +1,31 @@
-Hero Name:    <%=heroname%>
-  
-Secret ID:    <%=identity%>
 
-Quote:
-"<%=quotetext%>"
+<html>
+<head>
+  <title>Heros!</title>
+</head>
+<body>
+<h1>Getting to know our Heroes</h1>
+<p>Hero Name:</p>
+<p><%=heroname%> </p>
+<img src="<%=picture%>"/> 
+<p>Alternate Identity:</p> 
+<p><%=identity%> </p>
+
+<p>Quote:</p>
+<p>"<%=quotetext%>"</p>
+
+<form action="/" method="POST">
+  <input type="text" name="Frank" />
+  <input type="submit" name="submit" value="submit" />
+</form>
+
+</body>
+</html>
+
+
+
+
+<!--Anything in between the angle brackets is Ruby code, interpreted as code, not as text, even in a text file. (.erb=embedded Ruby-->
+
+<!-- line 17-20 is the input box and button, which takes information in to key hash pairs, almost like a Ruby hash. the space named Frank takes the value input. In Env there is a hash key pair  "REQUEST_METHOD"=>"POST" when i have inputted a value in the box because there is a post of information coming back, before i had done that "REQUEST_METHOD"=>"GET" the contents of the button is returned as an object in the "rack.input"=>#<Rack::Lint::InputWrapper:0x297e5c8 @input=
+#<StringIO:0x2981118>>-->
